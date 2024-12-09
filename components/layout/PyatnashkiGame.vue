@@ -7,7 +7,7 @@
               <button @click="toggleRules" class="rules-button">Правила</button>
               <!-- Статус движения -->
               <div id="moves" class="moves" v-if="gameStarted">{{ `Ходы: ${movesCount}` }}</div>
-              <h1 class="game-title">Картина: {{ currentPicture.title }}</h1>
+              <h1 class="game-title">{{ currentPicture.title }}</h1>
               <!-- Кнопка "Подсказка" в экране игры -->
               <button @click="toggleHint" class="hint-button">Подсказка</button>
           </div>
@@ -265,7 +265,8 @@ const closeRules = () => {
     max-width: 100%;
   }
   .pyatnashki-container {
-      width: 1000px;
+      width: 70%;
+      max-width: 1000px;
       display: flex;
       flex-direction: column;
       margin: 0 auto;
@@ -299,6 +300,8 @@ const closeRules = () => {
   .game-title {
     font-size: 24px;
     margin: 0;
+    width: 60%;
+    text-align: center;
   }
   
   .moves {
@@ -308,9 +311,12 @@ const closeRules = () => {
   
   .container {
     display: grid;
-    width: 25em;
-    height: 25em;
+    width: 90%;
+    max-width: 500px;
+    //height: 25em;
+    aspect-ratio: 1;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     background: #fff;
     margin: 2em 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -324,9 +330,12 @@ const closeRules = () => {
     left: 0;
     object-fit: cover;
     opacity: 0.5;
+    pointer-events: none;
     /* z-index: -1; */
   }
   .image-container {
+      width: 100%;
+      height: 100%;
       position: relative;
       border: 1px solid #ffffff;
       display: flex;
@@ -357,7 +366,7 @@ const closeRules = () => {
   }
   #moves {
     position: relative;
-    margin: 1em;
+    margin: 0.5em;
     text-align: right;
   }
   .hide {
@@ -423,7 +432,6 @@ const closeRules = () => {
       color: white;
       font-size: 1em;
       cursor: pointer;
-      margin-right: 10px;
   }
 
 .rules-button:hover {
@@ -441,6 +449,7 @@ const closeRules = () => {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    overflow: hidden;
 }
 
 .modal-content {
@@ -450,6 +459,8 @@ const closeRules = () => {
     text-align: center;
     max-width: 600px;
     width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border: #a37a1a 6px solid;
 
@@ -514,5 +525,67 @@ const closeRules = () => {
     text-align: center;
   }
 }
+
+@media (max-width: 1280px) {
+  .pyatnashki-container {
+    width: 90%;
+  }
+  .game-title {
+    width: 40%;
+  }
+  .top-bar {
+    gap: 10px;
+  }
+  .game-title {
+    font-size: 18px;
+  }
+  .hint-button, .rules-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pyatnashki-container {
+    width: 95%;
+  }
+  .game-title {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    grid-auto-rows: 6em;
+  }
+
+  .original-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .top-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .game-title {
+    font-size: 16px;
+  }
+  .hint-button, .rules-button {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+  .modal-image {
+    .image-rules-toggle {
+      width: 50%;
+    }
+}
+  p {
+    font-size: 10px;
+  }
+}
+
   </style>
   

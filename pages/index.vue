@@ -15,6 +15,14 @@
                 :image="'/images/games-cover/tag-cover.png'"
                 @startGame="startGame('pyatnashki')" 
             />
+
+            <GameCard
+                title="Название картин"
+                description="Насколько хорошо вы знаете картины художника В.В. Верещагина? Попробуйте угадать название картин по сериям!"
+                :image="'/images/games-cover/picture-name-cover.png'"
+                @startGame="startGame('working')" 
+            />
+
         </div>
         <!-- Если игра началась, показываем игру с пятнашками -->
         <div v-else>
@@ -24,7 +32,7 @@
         <div v-if="isModalVisible" class="modal">
             <div class="modal-content">
                 <p>Игра находится в разработке...</p>
-                <button @click="closeModal">ОК</button>
+                <button style="margin-top: 0;" @click="closeModal">ОК</button>
             </div>
         </div>
 
@@ -114,11 +122,12 @@ const closeModal = () => {
 
 <style lang="scss" scoped>
     .games-container {
-        width: 70%;
+        width: 80%;
         margin: 30px auto;
         padding: 30px;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 10px;
         align-items: center;
         justify-content: center;
         background-color: #5a4c80;
@@ -194,5 +203,10 @@ const closeModal = () => {
             background-color: #ececec;
         }
     }
+    @media (max-width: 768px) {
+    .games-container {
+        grid-template-columns: 1fr; /* Одна колонка при узком экране */
+    }
+}
 }
 </style>

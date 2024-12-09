@@ -19,7 +19,8 @@ const props = defineProps ({
 
 <style lang="scss" scoped>
     .game-card {
-        width: 500px;
+        width: 100%;
+        max-width: 500px;
         height: 300px;
         display: flex;
         flex-direction: row;
@@ -29,11 +30,13 @@ const props = defineProps ({
         border-radius: 30px;
         box-shadow:  0 0 20px rgba(0, 0, 0, 0.5);
         padding-inline: 30px;
-        margin: 30px 40px;
+        margin: 30px auto;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
 
         .game-cover {
-            height: 80%;
-            border-radius: 15px;
+            height: 230px;
+            border-radius: 5px;
         }
 
         .game-info {
@@ -73,5 +76,68 @@ const props = defineProps ({
 
         }
     }
+    .game-card:hover {
+    transform: translateY(-5px); /* Легкий "подъем" карточки при наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Увеличение тени при наведении */
+}
+
+.game-card h2 {
+    font-size: 1.5rem; /* Заголовок покрупнее */
+    margin-bottom: 10px;
+    color: #333; /* Темный цвет для контраста */
+}
+
+.game-card p {
+    font-size: 1rem; /* Размер текста для мобильных устройств */
+    color: #666; /* Серый цвет текста */
+}
+
+@media (max-width: 1400px) {
+    .games-container {
+        grid-template-columns: 1fr; /* Одна колонка на узких экранах */
+        padding: 10px;
+    }
+
+    .game-card {
+        padding: 15px; /* Уменьшаем внутренние отступы */
+        width: 95%;
+        .game-cover {
+            height: 200px;
+        }
+    }
+
+    .game-card h2 {
+        font-size: 1.25rem; /* Уменьшаем заголовок */
+    }
+
+    .game-card p {
+        font-size: 0.9rem; /* Уменьшаем текст */
+    }
+}
+
+@media (max-width: 480px) {
+    .game-card {
+        padding: 10px; /* Еще меньший отступ для компактности */
+        width: 60%;
+        padding-block: 20px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+
+        .game-cover {
+            height: 150px;
+        }
+    }
+
+    .game-card h2 {
+        font-size: 1rem; /* Компактный заголовок */
+    }
+
+    .game-card p {
+        font-size: 0.85rem; /* Компактный текст */
+        text-align: center;
+    }
+}
 </style>
     
