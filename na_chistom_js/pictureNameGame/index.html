@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра Верещагина</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Перетащите картины к их названиям</h1>
+    <div class="game-container">
+        <div class="images">
+            <img src="images/Vasily1.jpg" id="painting1" alt="Картина 1" class="draggable" draggable="true">
+            <img src="images/Vasily2.jpg" id="painting2" alt="Картина 2" class="draggable" draggable="true">
+            <img src="images/V.jpg" id="painting3" alt="Картина 3" class="draggable" draggable="true">
+            <!-- Добавьте другие изображения -->
+        </div>
+        <div class="labels">
+            <div class="dropzone" data-correct="painting1">Апофеоз войны 1</div>
+            <div class="dropzone" data-correct="painting2">Дервиши в праздничных нарядах</div>
+            <div class="dropzone" data-correct="painting3">Калмыцкий лама</div>
+            <!-- Добавьте другие зоны -->
+            
+        </div>
+    </div>
+    <!-- Добавьте элемент alert сюда -->
+    <div id="alertBox" class="alert" style="display: none;"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
